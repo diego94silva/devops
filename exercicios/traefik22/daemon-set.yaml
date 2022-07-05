@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: traefik
+      app: traefik-daemon-set
   template:
     metadata:
       labels:
