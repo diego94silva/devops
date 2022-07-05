@@ -3,15 +3,17 @@ kind: DaemonSet
 apiVersion: apps/v1
 metadata:
   name: traefik-daemon-set
+  namespace: kube-system
   labels:
     applicationn: traefik-daemon-set
 spec:
   selector:
     matchLabels:
-      app: traefik-daemon-set
-  template:
+      k8s-app: traefik-daemon-set
+  template: 
     metadata:
       labels:
+        k8s-app: traefik-daemon-set
         applicationn: traefik-daemon-set
     spec:
       serviceAccountName: traefik-ingress-controller
