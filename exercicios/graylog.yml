@@ -327,22 +327,26 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: graylog
-  name: graylog
   annotations:
     allow.http: "false"
+  name: graylog
+  namespace: graylog
 spec:
   rules:
-  - host: graylog.rancher.dev-ops-ninja.com
+  - host: graylog.rancher.com
     http:
       paths:
-        - path: /
-          backend:
-            serviceName: graylog
-            servicePort: 9000
+      - backend:
+          service:
+            name: graylog
+            port:
+              number: 9000
+        path: /
+        pathType: Prefix
+
 
 
 ---
